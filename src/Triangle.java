@@ -34,5 +34,31 @@ public class Triangle {
         return this.sides[0]+this.sides[1]+this.sides[2];
     }
 
+    public double getArea() {
+        double x1 = this.points[0].getxCoordinate();
+        double x2 = this.points[2].getxCoordinate();
+        double x3 = this.points[1].getxCoordinate();
+
+        double y1 = this.points[0].getyCoordinate();
+        double y2 = this.points[2].getyCoordinate();
+        double y3 = this.points[1].getyCoordinate();
+        return 0.5 * Math.abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2));
+    }
+    public boolean isInsideTriangle(Point p){
+        //initiating a new array to store the sides from the new point
+        double[] newSides= new double[3];
+        newSides[0] = distanceBetweenTwoPoints(p,this.points[0]);
+        newSides[1] = distanceBetweenTwoPoints(p,this.points[1]);
+        newSides[2] = distanceBetweenTwoPoints(p,this.points[2]);
+
+        //comparing the new sides if any of them is bigger than the old one
+        if(newSides[0]>this.sides[0] || newSides[0]>this.sides[1] || newSides[0]>this.sides[2]) return false;
+        if (newSides[1]>this.sides[0] || newSides[1]>this.sides[1] || newSides[1]>this.sides[2]) return false;
+        if (newSides[2]>this.sides[0] || newSides[2]>this.sides[1] || newSides[2]>this.sides[2]) return false;
+        return true;
+
+    }
+
+
 
 }
