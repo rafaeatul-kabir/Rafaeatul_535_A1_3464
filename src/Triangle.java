@@ -3,24 +3,34 @@ public class Triangle {
     private final double[] sides = new double[3];
     private Type type;
 
+    /**
+     *
+     * @param points point object
+     */
     public Triangle(Point[] points) {
         this.points = points;
-        setType(this.sides);
+        setType();
     }
+
+    /**
+     *
+     * @param point1 point object
+     * @param point2 point object
+     * @return double value of the distance between two points passed as parameter
+     */
     private double distanceBetweenTwoPoints(Point point1, Point point2){
         return Math.sqrt(Math.pow((point1.getxCoordinate()-point2.getxCoordinate()),2)+Math.pow((point1.getyCoordinate()-point2.getyCoordinate()),2));
     }
-
     private void calculateSides(){
         this.sides[0] = distanceBetweenTwoPoints(this.points[0], this.points[1]);
         this.sides[1] = distanceBetweenTwoPoints(this.points[1], this.points[2]);
         this.sides[2] = distanceBetweenTwoPoints(this.points[2], this.points[0]);
     }
-    public void setType(double[] sides) {
+    public void setType() {
         calculateSides();
-        if (sides[0]==sides[2] && sides[1]==sides[0]){
+        if (this.sides[0]==this.sides[2] && this.sides[1]==this.sides[0]){
             this.type=Type.EQUILATERAL;
-        } else if (sides[0]==sides[1] || sides[1]==sides[2] || sides[2]==sides[0]) {
+        } else if (this.sides[0]==this.sides[1] || this.sides[1]==this.sides[2] || this.sides[2]==this.sides[0]) {
             this.type=Type.ISOCELES;
         }
         else{
@@ -52,7 +62,7 @@ public class Triangle {
         newSides[2] = distanceBetweenTwoPoints(p,this.points[2]);
 
         //comparing the new sides if any of them is bigger than the old one
-        if(newSides[0]>this.sides[0] || newSides[0]>this.sides[1] || newSides[0]>this.sides[2]) return false;
+        if (newSides[0]>this.sides[0] || newSides[0]>this.sides[1] || newSides[0]>this.sides[2]) return false;
         if (newSides[1]>this.sides[0] || newSides[1]>this.sides[1] || newSides[1]>this.sides[2]) return false;
         if (newSides[2]>this.sides[0] || newSides[2]>this.sides[1] || newSides[2]>this.sides[2]) return false;
         return true;

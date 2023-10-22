@@ -1,9 +1,13 @@
 import java.util.Scanner;
 public class InputValidator {
+    /**
+     *
+     * @param sc scanner object
+     * @param msg message that shows as input instruction
+     * @return valid double value
+     */
     public static double takeDoubleInput(Scanner sc, String msg){
         double validDouble = 0.0;
-        boolean validInput = false;
-
         while (true) {
             System.out.print(msg);
             if (sc.hasNextDouble()) {

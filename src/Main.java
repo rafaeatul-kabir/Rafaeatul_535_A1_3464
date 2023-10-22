@@ -1,10 +1,12 @@
+//Author: Rafaeatul Kabir
+//ID: C0888535
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //setting the array size of the triangles in a constant
-        final int NUMBER_OF_TRIANGLES = 3;
+        final int NUMBER_OF_TRIANGLES = 1;
         //initiating empty array of triangles
         Triangle[] triangles = new Triangle[NUMBER_OF_TRIANGLES];
 
@@ -24,11 +26,17 @@ public class Main {
             System.out.println("The type is "+triangles[t].getType()+" and the perimeter is "+triangles[t].getPerimeter());
             //extra mark portion
             System.out.println("The area of is "+triangles[t].getArea());
-            String insideCheckMsg = triangles[t].isInsideTriangle(newPoint)?"The new point is inside the Triangle":"The new point is outside the Triangle";
+            String insideCheckMsg = triangles[t].isInsideTriangle(newPoint)?"The new point is inside this triangle":"The new point is outside this triangle";
             System.out.println(insideCheckMsg);
         }
     }
 
+    /**
+     *
+     * @param sc scanner object
+     * @param numberOfVertices double
+     * @return triangle object
+     */
     public static Triangle takeInputForTriangle(Scanner sc, int numberOfVertices){
         Point[] pointsFromUser = new Point[numberOfVertices];
         for (int v = 0; v < numberOfVertices; v++) {
@@ -38,6 +46,12 @@ public class Main {
         }
         return new Triangle(pointsFromUser);
     }
+
+    /**
+     *
+     * @param sc scanner object
+     * @return point object
+     */
     public static Point takePointInput(Scanner sc){
         double x =  InputValidator.takeDoubleInput(sc, "Enter x: ");
         double y =  InputValidator.takeDoubleInput(sc, "Enter y: ");
