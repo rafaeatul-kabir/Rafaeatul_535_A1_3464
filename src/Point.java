@@ -6,4 +6,12 @@ public class Point {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
+
+    public double getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public double getyCoordinate() {
+        return yCoordinate;
+    }
 }

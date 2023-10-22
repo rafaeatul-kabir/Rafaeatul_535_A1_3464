@@ -11,7 +11,7 @@ public class InputValidator {
                 return validDouble;
             } else {
                 System.out.println("Invalid input. Please enter a valid double.");
-                sc.nextLine(); // Consume the invalid input
+                sc.next(); // Consume the invalid input
             }
         }
     }
